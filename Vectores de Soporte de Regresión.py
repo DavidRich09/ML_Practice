@@ -6,32 +6,47 @@ from sklearn.svm import SVR
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 
-boston = datasets.load_boston()
 
-X_svr = boston.data[:, np.newaxis, 5]
-y_svr = boston.target
+class VecSoporte:
 
-plt.scatter(X_svr, y_svr)
-# plt.show()
+    def __init__(self):
+        self.boston = datasets.load_boston()
+        
+        self.X_svr = self.boston.data[:, np.newaxis, 5]
+        self.y_svr = self.boston.target
 
-X_train, X_test, y_train, y_test = train_test_split(X_svr, y_svr, test_size=0.65)
+        
+        
+        self.Graficar()
 
-svr = SVR(kernel='linear', C=1.0, epsilon=0.2)
+    def Graficar(self):
+        plt.scatter(self.X_svr, self.y_svr)
+        plt.title('Vectores de soporte de regresión')
+        plt.xlabel('Distancia')
+        plt.ylabel('Precio')
+        plt.show()
 
-svr.fit(X_train, y_train)
+    def EntrenarYPredecir(self):
+        X_train, X_test, y_train, y_test = train_test_split(self.X_svr, self.y_svr, test_size=0.65)
 
-Y_pred = svr.predict(X_test)
+        svr = SVR(kernel='linear', C=1.0, epsilon=0.2)
 
-plt.scatter(X_test, y_test)
-plt.plot(X_test, Y_pred, color='red', linewidth=3)
+        svr.fit(X_train, y_train)
 
-plt.title('MODELO VECTORES DE SOPORTE REGRESIÓN')
-plt.xlabel('Número de habitaciones')
-plt.ylabel('Valor medio')
-plt.show()
+        Y_pred = svr.predict(X_test)
 
-print()
-print('DATOS DEL MODELO VECTORES DE SOPORTE REGRESIÓN')
-print()
-print('Precisión del modelo:')
-print(svr.score(X_train, y_train))
+        plt.scatter(X_test, y_test)
+        plt.plot(X_test, Y_pred, color='red', linewidth=3)
+        
+        plt.title('Vectores de soporte de regresión')
+        plt.xlabel('Distancia')
+        plt.ylabel('Precio')
+        plt.show()
+        
+        print('Precisión del modelo:')
+        print(svr.score(X_train, y_train))
+        
+
+VSR = VecSoporte()
+VSR.Graficar()
+VSR.EntrenarYPredecir()
