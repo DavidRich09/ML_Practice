@@ -14,7 +14,7 @@ y_svr = boston.target
 plt.scatter(X_svr, y_svr)
 # plt.show()
 
-X_train, X_test, y_train, y_test = train_test_split(X_svr, y_svr, test_size=0.2)
+X_train, X_test, y_train, y_test = train_test_split(X_svr, y_svr, test_size=0.65)
 
 svr = SVR(kernel='linear', C=1.0, epsilon=0.2)
 

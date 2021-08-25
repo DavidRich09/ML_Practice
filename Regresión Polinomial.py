@@ -11,7 +11,10 @@ boston = datasets.load_boston()
 X_p = boston.data[:, np.newaxis, 5]
 y_p = boston.target
 
-X_train_p, X_test_p, y_train_p, y_test_p = train_test_split(X_p, y_p, test_size=0.2)
+plt.scatter(X_p, y_p)
+plt.show()
+
+X_train_p, X_test_p, y_train_p, y_test_p = train_test_split(X_p, y_p, test_size=0.65)
 
 poli_reg = PolynomialFeatures(degree = 2)
 
