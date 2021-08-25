@@ -18,8 +18,8 @@ class RegresionPolinomial:
 
         plt.scatter(self.X_p, self.y_p)
         plt.title('Regresión Polinomial')
-        plt.xlabel('Número de habitaciones')
-        plt.ylabel('Valor medio')
+        plt.xlabel('Distancia')
+        plt.ylabel('Precio')
         plt.show()
 
     def GraficaRegPol(self):
